@@ -10,7 +10,8 @@ import Foundation
 import youtube_ios_player_helper
 import UIKit
 
-class ViewController: UIViewController, YTPlayerViewDelegate {
+class ViewController: UIViewController, YTPlayerViewDelegate,
+	UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
 	@IBOutlet weak var playerView: YTPlayerView!
 	@IBOutlet weak var loading: UIActivityIndicatorView!
@@ -22,7 +23,9 @@ class ViewController: UIViewController, YTPlayerViewDelegate {
 	@IBOutlet weak var excerciseContainer: UIView!
 	@IBOutlet weak var ebookView: UIView!
 
+	@IBOutlet weak var pageControll: UIPageControl!
 	@IBOutlet weak var nextActivityButton: UIButton!
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -38,7 +41,23 @@ class ViewController: UIViewController, YTPlayerViewDelegate {
 				self?.loading.stopAnimating()
 			}
 		)
+
+		pageViewController = UIPageViewController(
+			transitionStyle: UIPageViewControllerTransitionStyle.scroll,
+			navigationOrientation: UIPageViewControllerNavigationOrientation.horizontal,
+			options: nil)
+
+		setupPageViewController()
 	}
+
+	private func setupPageViewController() {
+		pageViewController.dataSource = self
+		pageViewController.delegate = self
+
+		pageViewController.view.frame = ebookView.frame
+		ebookView.addSubview(pageViewController.view)
+	}
+
 
 	@IBAction func nextActivity(_ sender: Any) {
 		guard let currentActivity = getCurrentActivity() else {
@@ -105,10 +124,13 @@ class ViewController: UIViewController, YTPlayerViewDelegate {
 		}
 
 		currentActivity.selectedAnswer = answer
+
+		nextActivity(currentActivity)
 	}
 
 	@IBAction func option1Action(_ sender: Any) {
 		setAsnwer(1)
+
 	}
 
 	@IBAction func option2Action(_ sender: Any) {
@@ -130,15 +152,42 @@ class ViewController: UIViewController, YTPlayerViewDelegate {
 
 		questionLabel.text = currentActivity.question
 		option1.setTitle(currentActivity.answers[0], for: .normal)
-		option2.setTitle(currentActivity.answers[2], for: .normal)
-		option3.setTitle(currentActivity.answers[3], for: .normal)
+		option2.setTitle(currentActivity.answers[1], for: .normal)
+		option3.setTitle(currentActivity.answers[2], for: .normal)
 	}
 
 	func setupEbook() {
 		nextActivityButton.isHidden = false
 		ebookView.isHidden = false
 
-		
+		guard let currentActivity = getCurrentActivity(),
+			currentActivity.type == "ebook" else {
+
+				return
+		}
+
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+		photoPageViewControllers = currentActivity.imageURLs.map({(imageUrl) in
+			let photoPageViewController = storyboard.instantiateViewController(withIdentifier: "photoPageViewController")
+				as! PhotoPageViewController
+
+			photoPageViewController.photoUrl = imageUrl
+
+			return photoPageViewController
+		})
+
+		guard let initialViewController = photoPageViewControllers.first else {
+			return
+		}
+
+		pageViewController.setViewControllers([initialViewController],
+		                                      direction: UIPageViewControllerNavigationDirection.forward,
+		                                      animated: false,
+		                                      completion: nil)
+
+		pageControll.numberOfPages = photoPageViewControllers.count
+		ebookView.bringSubview(toFront: pageControll)
 	}
 
 	func setupVideo() {
@@ -224,7 +273,38 @@ class ViewController: UIViewController, YTPlayerViewDelegate {
 		print(updatedActivities)
 	}
 
+	func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+		guard let photoPageViewController = viewController as? PhotoPageViewController,
+			let index = photoPageViewControllers.index(of: photoPageViewController), index > 0 else {
+
+				return nil
+		}
+
+		return photoPageViewControllers[index - 1]
+	}
+
+	func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool,
+	                        previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+
+		if (completed) {
+			pageControll.currentPage = photoPageViewControllers.index(of: pageViewController.viewControllers?.first as! PhotoPageViewController)!
+		}
+	}
+
+	func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+		guard let photoPageViewController = viewController as? PhotoPageViewController,
+			let index = photoPageViewControllers.index(of: photoPageViewController),
+			index < (photoPageViewControllers.count - 1) else {
+
+				return nil
+		}
+
+		return photoPageViewControllers[index + 1]
+	}
+
+	var photoPageViewControllers = [PhotoPageViewController]()
 	var jsonData = [String: AnyObject]()
 	var activities: [Activity] = [Activity]()
+	var pageViewController : UIPageViewController!
 }
 

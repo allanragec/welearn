@@ -13,6 +13,7 @@
 		4A04F9311F598B01004DD1A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A04F92F1F598B01004DD1A1 /* Main.storyboard */; };
 		4A04F9331F598B01004DD1A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A04F9321F598B01004DD1A1 /* Assets.xcassets */; };
 		4A04F9361F598B01004DD1A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A04F9341F598B01004DD1A1 /* LaunchScreen.storyboard */; };
+		4A53FE3D1F59E383006854A6 /* PhotoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A53FE3C1F59E383006854A6 /* PhotoPageViewController.swift */; };
 		4A5919041F59A05D00F3DAA2 /* GetActivitiesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5919031F59A05D00F3DAA2 /* GetActivitiesInteractor.swift */; };
 		4A5919071F59A0AF00F3DAA2 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5919061F59A0AF00F3DAA2 /* Activity.swift */; };
 		4A5919091F59A9E700F3DAA2 /* GetActivitiesInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5919081F59A9E700F3DAA2 /* GetActivitiesInteractorTest.swift */; };
@@ -45,6 +46,7 @@
 		4A04F9371F598B01004DD1A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A04F93C1F598B01004DD1A1 /* WeLearnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeLearnTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A04F9421F598B01004DD1A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A53FE3C1F59E383006854A6 /* PhotoPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPageViewController.swift; sourceTree = "<group>"; };
 		4A5919031F59A05D00F3DAA2 /* GetActivitiesInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActivitiesInteractor.swift; sourceTree = "<group>"; };
 		4A5919061F59A0AF00F3DAA2 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		4A5919081F59A9E700F3DAA2 /* GetActivitiesInteractorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActivitiesInteractorTest.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				4A5919021F59A01200F3DAA2 /* Interactors */,
 				4A04F92B1F598B01004DD1A1 /* AppDelegate.swift */,
 				4A04F92D1F598B01004DD1A1 /* ViewController.swift */,
+				4A53FE3C1F59E383006854A6 /* PhotoPageViewController.swift */,
 				4A04F92F1F598B01004DD1A1 /* Main.storyboard */,
 				4A04F9321F598B01004DD1A1 /* Assets.xcassets */,
 				4A04F9341F598B01004DD1A1 /* LaunchScreen.storyboard */,
@@ -308,6 +311,7 @@
 			files = (
 				4A04F92E1F598B01004DD1A1 /* ViewController.swift in Sources */,
 				4A04F92C1F598B01004DD1A1 /* AppDelegate.swift in Sources */,
+				4A53FE3D1F59E383006854A6 /* PhotoPageViewController.swift in Sources */,
 				4A7274511F59C33D00D77B92 /* UpdateActivitiesInteractor.swift in Sources */,
 				4A5919071F59A0AF00F3DAA2 /* Activity.swift in Sources */,
 				4A5919041F59A05D00F3DAA2 /* GetActivitiesInteractor.swift in Sources */,

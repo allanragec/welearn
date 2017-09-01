@@ -102,8 +102,15 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XuS-iq-wJY" userLabel="EbookView">
                                 <rect key="frame" x="0.0" y="20" width="375" height="290"/>
+                                <subviews>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="0f1-7m-0sm">
+                                        <rect key="frame" x="168" y="245" width="39" height="37"/>
+                                    </pageControl>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="0f1-7m-0sm" secondAttribute="bottom" constant="8" id="BNx-Gh-NTa"/>
+                                    <constraint firstItem="0f1-7m-0sm" firstAttribute="centerX" secondItem="XuS-iq-wJY" secondAttribute="centerX" id="FkS-zT-irC"/>
                                     <constraint firstAttribute="height" constant="290" id="LqA-zm-UUo"/>
                                 </constraints>
                             </view>
@@ -132,6 +139,7 @@
                         <outlet property="option1" destination="LAU-fd-cSn" id="iYr-Sd-TOg"/>
                         <outlet property="option2" destination="smV-ib-VJ8" id="axv-b9-WFo"/>
                         <outlet property="option3" destination="MU0-2C-7fZ" id="r1p-ff-CgS"/>
+                        <outlet property="pageControll" destination="0f1-7m-0sm" id="JcK-2e-Npd"/>
                         <outlet property="playerView" destination="c1y-Ee-R46" id="MWW-bk-c0z"/>
                         <outlet property="questionLabel" destination="lss-2Q-hp4" id="7DI-tU-Mpm"/>
                     </connections>
@@ -139,6 +147,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+        </scene>
+        <!--Photo Page View Controller-->
+        <scene sceneID="fqt-g6-lo3">
+            <objects>
+                <viewController storyboardIdentifier="photoPageViewController" id="m75-sr-yEX" customClass="PhotoPageViewController" customModule="WeLearn" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Aem-yq-j2p"/>
+                        <viewControllerLayoutGuide type="bottom" id="MKz-pm-Vbl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gQy-So-vZM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ohr-BM-iNg">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.029377140409999999" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="rkD-o0-eMP">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <color key="color" red="0.96862745100000003" green="0.44705882349999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ohr-BM-iNg" secondAttribute="trailing" id="1UH-dp-Iqo"/>
+                            <constraint firstItem="Ohr-BM-iNg" firstAttribute="leading" secondItem="gQy-So-vZM" secondAttribute="leading" id="HIi-2i-KYl"/>
+                            <constraint firstItem="Ohr-BM-iNg" firstAttribute="top" secondItem="Aem-yq-j2p" secondAttribute="bottom" constant="-20" id="bRm-5d-6tG"/>
+                            <constraint firstItem="rkD-o0-eMP" firstAttribute="centerX" secondItem="Ohr-BM-iNg" secondAttribute="centerX" id="gla-p6-8x5"/>
+                            <constraint firstItem="MKz-pm-Vbl" firstAttribute="top" secondItem="Ohr-BM-iNg" secondAttribute="bottom" id="yYU-eq-E8E"/>
+                            <constraint firstItem="rkD-o0-eMP" firstAttribute="centerY" secondItem="Ohr-BM-iNg" secondAttribute="centerY" id="yjc-Ec-aeI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="rkD-o0-eMP" id="Yoz-Ds-DTs"/>
+                        <outlet property="imageView" destination="Ohr-BM-iNg" id="UfJ-kl-qt5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="17K-gz-qdr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1153" y="-761"/>
         </scene>
     </scenes>
 </document>

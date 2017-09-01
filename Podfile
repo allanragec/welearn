@@ -7,5 +7,6 @@ target 'WeLearn' do
 
   # Pods for WeLearn
   pod "youtube-ios-player-helper"
+  pod "SDWebImage"
 
 end

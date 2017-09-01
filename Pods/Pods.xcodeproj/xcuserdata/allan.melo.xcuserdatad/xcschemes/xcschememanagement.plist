@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>youtube-ios-player-helper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>006DF460AEB0AA70B55ED4AAFCC336BB</key>
+		<key>0467CAEBA46A48B60AA68108E1FFF08E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9A065C04181C64136738EB9D188ED1CA</key>
+		<key>8DD6F9CC7985EE98E750854826F2FE34</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C4F10D79868A0592ED21D575E571DEF2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
