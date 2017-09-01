@@ -56,6 +56,12 @@ class ViewController: UIViewController, YTPlayerViewDelegate,
 
 		pageViewController.view.frame = ebookView.frame
 		ebookView.addSubview(pageViewController.view)
+
+		let appearance = UIPageControl.appearance()
+		appearance.pageIndicatorTintColor = UIColor.white
+		appearance.currentPageIndicatorTintColor = UIColor.blue
+		appearance.backgroundColor = UIColor.clear
+		appearance.hidesForSinglePage = true
 	}
 
 
@@ -125,7 +131,13 @@ class ViewController: UIViewController, YTPlayerViewDelegate,
 
 		currentActivity.selectedAnswer = answer
 
-		nextActivity(currentActivity)
+		let alert = UIAlertController(title: "Alert", message: "Thanks for your answer", preferredStyle: UIAlertControllerStyle.alert)
+		alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { alert in
+			nextActivity(currentActivity)
+		}))
+
+		self.present(alert, animated: true, completion: nil)
+
 	}
 
 	@IBAction func option1Action(_ sender: Any) {
@@ -244,6 +256,7 @@ class ViewController: UIViewController, YTPlayerViewDelegate,
 
 		let isVideo = currentActivity.type == "video"
 		let isExcercise = currentActivity.type == "excercise"
+		let isEbook = currentActivity.type == "ebook"
 
 		let activitiesJson = jsonData["media"] as? [[String: AnyObject]]
 
@@ -260,6 +273,10 @@ class ViewController: UIViewController, YTPlayerViewDelegate,
 
 				if (isExcercise) {
 					activity.updateValue(currentActivity.selectedAnswer as AnyObject, forKey: "answer")
+				}
+
+				if (isEbook) {
+					activity.updateValue(currentActivity.currentPage as AnyObject, forKey: "currentPage")
 				}
 			}
 			else {
