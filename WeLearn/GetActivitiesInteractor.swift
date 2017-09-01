@@ -10,7 +10,7 @@ import Foundation
 
 
 class GetActivitiesInteractor  {
-	func execute(onSuccess: @escaping (([Activity])->()), onError: @escaping ((Error)->())) {
+	func execute(onSuccess: @escaping (([Activity], [String: AnyObject])->()), onError: @escaping ((Error)->())) {
 		guard let url = baseUrl else {
 			return
 		}
@@ -25,14 +25,14 @@ class GetActivitiesInteractor  {
 						let hits = json["hits"] as? [String: AnyObject],
 						let hitsJson = hits["hits"] as? [[String: AnyObject]],
 						let sourceJson = hitsJson.first?["_source"] as? [String: AnyObject],
-						let mediasJson = sourceJson["media"] as? [[String: AnyObject]] else{
+						let mediasJson = sourceJson["media"] as? [[String: AnyObject]] else {
 
-							let error = NSError.init(domain: "Could not possible deserializer the response", code: 0, userInfo: nil)
-							DispatchQueue.main.async {
-								onError(error)
-							}
+						let error = NSError.init(domain: "Could not possible deserializer the response", code: 0, userInfo: nil)
+						DispatchQueue.main.async {
+							onError(error)
+						}
 
-							return
+						return
 					}
 
 					let activities = mediasJson.map({ json -> Activity in
@@ -40,7 +40,7 @@ class GetActivitiesInteractor  {
 					})
 
 					DispatchQueue.main.async {
-						onSuccess(activities)
+						onSuccess(activities, sourceJson)
 					}
 				}
 				catch {
@@ -65,11 +65,12 @@ class GetActivitiesInteractor  {
 
 		activity.current = activityJson["current"] as? Bool ?? false
 		activity.type = activityJson["type"] as? String ?? ""
+		activity.id = activityJson["id"] as? Int ?? 0
 
 		switch activity.type {
 			case "video":
 				activity.videoURL = activityJson["videoURL"] as? String ?? ""
-				activity.time = activityJson["time"] as? Int ?? 0
+				activity.time = activityJson["time"] as? Float ?? 0
 				break
 			case "ebook":
 				activity.imageURLs = activityJson["imageURLs"] as? [String] ?? [String]()

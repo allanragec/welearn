@@ -18,6 +18,7 @@
 		4A5919091F59A9E700F3DAA2 /* GetActivitiesInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5919081F59A9E700F3DAA2 /* GetActivitiesInteractorTest.swift */; };
 		4A59190A1F59AA7300F3DAA2 /* GetActivitiesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5919031F59A05D00F3DAA2 /* GetActivitiesInteractor.swift */; };
 		4A59190C1F59AAE600F3DAA2 /* XCTestCaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A59190B1F59AAE600F3DAA2 /* XCTestCaseExtension.swift */; };
+		4A7274511F59C33D00D77B92 /* UpdateActivitiesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7274501F59C33D00D77B92 /* UpdateActivitiesInteractor.swift */; };
 		4AF3FCC41F59AC3B00C50358 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5919061F59A0AF00F3DAA2 /* Activity.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		4A5919061F59A0AF00F3DAA2 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		4A5919081F59A9E700F3DAA2 /* GetActivitiesInteractorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActivitiesInteractorTest.swift; sourceTree = "<group>"; };
 		4A59190B1F59AAE600F3DAA2 /* XCTestCaseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestCaseExtension.swift; sourceTree = "<group>"; };
+		4A7274501F59C33D00D77B92 /* UpdateActivitiesInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateActivitiesInteractor.swift; sourceTree = "<group>"; };
 		6C67B8BA9FD56A35CC599C74 /* Pods_WeLearnTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeLearnTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				4A5919031F59A05D00F3DAA2 /* GetActivitiesInteractor.swift */,
+				4A7274501F59C33D00D77B92 /* UpdateActivitiesInteractor.swift */,
 			);
 			name = Interactors;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 			files = (
 				4A04F92E1F598B01004DD1A1 /* ViewController.swift in Sources */,
 				4A04F92C1F598B01004DD1A1 /* AppDelegate.swift in Sources */,
+				4A7274511F59C33D00D77B92 /* UpdateActivitiesInteractor.swift in Sources */,
 				4A5919071F59A0AF00F3DAA2 /* Activity.swift in Sources */,
 				4A5919041F59A05D00F3DAA2 /* GetActivitiesInteractor.swift in Sources */,
 			);

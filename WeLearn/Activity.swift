@@ -9,10 +9,11 @@
 class Activity {
 	var current = false
 	var type = ""
+	var id = 0
 
 	// type "video"
 	var videoURL = ""
-	var time = 0
+	var time: Float = 0
 
 	// type "ebook"
 	var imageURLs = [String]()
